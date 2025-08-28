@@ -7,7 +7,7 @@
     <title>Editar Funcionário</title>
 </head>
 <body>
-    <a href="{{ route('funcionario.index') }}">Listar</a>
+    <a href="{{ route('funcionarios.index') }}">Listar</a>
     <h2>Editar Funcionário</h2>
 
     @if ($errors->any())
@@ -19,7 +19,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('funcionario.update', $funcionario->id) }}" method="POST">
+    <form action="{{ route('funcionarios.update', $funcionario->id) }}" method="POST">
         @csrf
         @method('PUT')
         <label for="nome">Nome:</label>

@@ -6,7 +6,7 @@
     <title>Funcionários</title>
 </head>
 <body>
-    <a href="{{ route('funcionario.create') }}">Criar Funcionário</a>
+    <a href="{{ route('funcionarios.create') }}">Criar Funcionário</a>
     <h2>Funcionários</h2>
 
     @if (session('success'))
@@ -33,10 +33,10 @@
             <td>{{ $funcionario->telefone }}</td>
             <td>{{ $funcionario->genero }}</td>
             <td>
-                <a href="{{ route('funcionario.show', $funcionario->id) }}">Ver</a>
+                <a href="{{ route('funcionarios.show', $funcionario->id) }}">Ver</a>
             </td>
             <td>
-                <a href="{{ route('funcionario.edit', $funcionario->id) }}">Editar</a>
+                <a href="{{ route('funcionarios.edit', $funcionario->id) }}">Editar</a>
             </td>
         </tr>
         @empty

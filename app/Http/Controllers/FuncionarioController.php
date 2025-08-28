@@ -32,7 +32,7 @@ class FuncionarioController extends Controller
     Funcionario::create($validatedData);
 
     return redirect()
-      ->route('funcionario.index')
+      ->route('funcionarios.index')
       ->with('success', 'Funcionário criado com sucesso!');
   }
 
@@ -50,7 +50,7 @@ class FuncionarioController extends Controller
     $funcionario->update($validatedData);
 
     return redirect()
-      ->route('funcionario.index')
+      ->route('funcionarios.index')
       ->with('success', 'Funcionário atualizado com sucesso!');
   }
 }

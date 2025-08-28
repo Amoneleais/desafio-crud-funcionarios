@@ -7,7 +7,7 @@
     <title>Criar Funcionário</title>
 </head>
 <body>
-    <a href="{{ route('funcionario.index') }}">Listar</a>
+    <a href="{{ route('funcionarios.index') }}">Listar</a>
     <h2>Criar Funcionário</h2>
 
     @if ($errors->any())
@@ -19,7 +19,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('funcionario.store') }}" method="POST">
+    <form action="{{ route('funcionarios.store') }}" method="POST">
         @csrf
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="{{ old('nome') }}"><br><br>
