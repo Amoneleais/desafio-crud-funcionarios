@@ -175,7 +175,6 @@ php artisan serve
   📁 migrations/      # Estrutura das tabelas
 📁 resources/
   📁 views/          # Páginas HTML
-  📁 css/           # Estilos
 📁 routes/
   📄 web.php        # Rotas do sistema
 ```
