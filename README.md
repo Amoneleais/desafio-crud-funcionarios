@@ -13,9 +13,9 @@ Sistema simples para cadastro e gerenciamento de funcionários feito com Laravel
 
 ## 🛠️ Tecnologias usadas
 
-- **Laravel 12** - Framework PHP (motor do sistema)
-- **MySQL** - Banco de dados (armazena as informações)
-- **TailwindCSS** - Estilização (deixa bonito)
+- **Laravel 12** - Framework PHP
+- **MySQL** - Banco de dados
+- **TailwindCSS** - Estilização
 - **PHP 8.2+** - Linguagem de programação
 
 ## 📋 O que você precisa ter instalado
