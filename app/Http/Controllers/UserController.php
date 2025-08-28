@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        return view(view: 'users.index');
-    }
+  public function index()
+  {
+    return view(view: 'users.index');
+  }
 }
