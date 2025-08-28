@@ -53,4 +53,13 @@ class FuncionarioController extends Controller
       ->route('funcionarios.index')
       ->with('success', 'Funcionário atualizado com sucesso!');
   }
+  public function destroy($id)
+  {
+    $funcionario = Funcionario::findOrFail($id);
+    $funcionario->delete();
+
+    return redirect()
+      ->route('funcionarios.index')
+      ->with('success', 'Funcionário excluído com sucesso!');
+  }
 }

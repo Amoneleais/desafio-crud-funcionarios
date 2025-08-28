@@ -1,7 +1,6 @@
 <?php namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class FuncionarioRequest extends FormRequest
 {
@@ -32,14 +31,12 @@ class FuncionarioRequest extends FormRequest
    */
   public function rules(): array
   {
-    $funcionarioId = request()->route('funcionario') ?? request()->route('id');
+    $funcionarioId = $this->route('id');
     return [
       'nome' => 'required|string|max:255',
-      'cpf' => [
-        'nullable',
-        'string',
-        Rule::unique('funcionarios', 'cpf')->ignore($funcionarioId),
-      ],
+      'cpf' =>
+        'nullable|string|max:14|unique:funcionarios,cpf,' .
+        ($funcionarioId ? $funcionarioId : null),
       'data_nascimento' => 'nullable|date',
       'telefone' => 'nullable|numeric',
       'genero' => 'required|in:Masculino,Feminino,Outro',

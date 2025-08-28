@@ -26,3 +26,7 @@ Route::put('/update-funcionario/{id}', [
   FuncionarioController::class,
   'update',
 ])->name('funcionarios.update');
+Route::delete('/delete-funcionario/{id}', [
+  FuncionarioController::class,
+  'destroy',
+])->name('funcionarios.destroy');
