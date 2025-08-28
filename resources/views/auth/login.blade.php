@@ -19,7 +19,7 @@
           @csrf
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700">
-              Email:
+              Email
             </label>
             <input
               type="email"
@@ -28,13 +28,16 @@
               required
               class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
+            @error('email')
+              <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
           </div>
           <div>
             <label
               for="password"
               class="block text-sm font-medium text-gray-700"
             >
-              Senha:
+              Senha
             </label>
             <input
               type="password"

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <title>Admin</title>
+    <title>Dashboard</title>
   </head>
 
   <body class="bg-light">

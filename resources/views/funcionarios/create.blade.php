@@ -22,7 +22,7 @@
       @csrf
       <div>
         <label for="nome" class="block text-sm font-medium text-gray-700">
-          Nome:
+          Nome
         </label>
         <input
           type="text"
@@ -37,7 +37,7 @@
       </div>
       <div>
         <label for="cpf" class="block text-sm font-medium text-gray-700">
-          CPF:
+          CPF
         </label>
         <input
           type="text"
@@ -55,7 +55,7 @@
           for="data_nascimento"
           class="block text-sm font-medium text-gray-700"
         >
-          Data de Nascimento:
+          Data de Nascimento
         </label>
         <input
           type="date"
@@ -70,7 +70,7 @@
       </div>
       <div>
         <label for="telefone" class="block text-sm font-medium text-gray-700">
-          Telefone:
+          Telefone
         </label>
         <input
           type="text"
@@ -85,7 +85,7 @@
       </div>
       <div>
         <label for="genero" class="block text-sm font-medium text-gray-700">
-          Gênero:
+          Gênero
         </label>
         <select
           id="genero"
