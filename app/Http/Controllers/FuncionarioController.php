@@ -1,23 +1,36 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FuncionarioRequest;
+use App\Http\Requests\StoreFuncionarioRequest;
+use App\Http\Requests\UpdateFuncionarioRequest;
 use App\Models\Funcionario;
+use App\Services\FuncionarioService;
 use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
 {
+  protected FuncionarioService $funcionarioService;
+  private const OWNERSHIP_ERROR = 'Você não tem permissão para acessar este funcionário.';
+
+  public function __construct(FuncionarioService $funcionarioService)
+  {
+    $this->funcionarioService = $funcionarioService;
+  }
+
   public function index()
   {
-    $user = auth()->user();
-    $funcionarios = $user->funcionarios()->orderByDesc('id')->get();
+    $funcionarios = $this->funcionarioService->getUserFuncionarios();
 
     return view('funcionarios.index', ['funcionarios' => $funcionarios]);
   }
 
-  public function show($id)
+  public function show(Funcionario $funcionario)
   {
-    $funcionario = Funcionario::findOrFail($id);
+    // Ensure the funcionario exists and belongs to the authenticated user
+    if (!$funcionario || $funcionario->user_id !== auth()->id()) {
+      abort(403, self::OWNERSHIP_ERROR);
+    }
+
     return view('funcionarios.show', ['funcionario' => $funcionario]);
   }
 
@@ -26,39 +39,52 @@ class FuncionarioController extends Controller
     return view('funcionarios.create');
   }
 
-  public function store(FuncionarioRequest $request)
+  public function store(StoreFuncionarioRequest $request)
   {
-    $validatedData = $request->validated();
-    $user = auth()->user();
-    $validatedData['user_id'] = $user->id;
-    Funcionario::create($validatedData);
+    $this->funcionarioService->createFuncionario($request->validated());
 
     return redirect()
       ->route('funcionarios.index')
       ->with('success', 'Funcionário criado com sucesso!');
   }
 
-  public function edit($id)
+  public function edit(Funcionario $funcionario)
   {
-    $funcionario = Funcionario::findOrFail($id);
+    // Ensure the funcionario exists and belongs to the authenticated user
+    if (!$funcionario || $funcionario->user_id !== auth()->id()) {
+      abort(403, self::OWNERSHIP_ERROR);
+    }
+
     return view('funcionarios.edit', ['funcionario' => $funcionario]);
   }
 
-  public function update(FuncionarioRequest $request, $id)
-  {
-    $validatedData = $request->validated();
+  public function update(
+    UpdateFuncionarioRequest $request,
+    Funcionario $funcionario,
+  ) {
+    // Ensure the funcionario exists and belongs to the authenticated user
+    if (!$funcionario || $funcionario->user_id !== auth()->id()) {
+      abort(403, self::OWNERSHIP_ERROR);
+    }
 
-    $funcionario = Funcionario::findOrFail($id);
-    $funcionario->update($validatedData);
+    $this->funcionarioService->updateFuncionario(
+      $funcionario,
+      $request->validated(),
+    );
 
     return redirect()
       ->route('funcionarios.index')
       ->with('success', 'Funcionário atualizado com sucesso!');
   }
-  public function destroy($id)
+
+  public function destroy(Funcionario $funcionario)
   {
-    $funcionario = Funcionario::findOrFail($id);
-    $funcionario->delete();
+    // Ensure the funcionario exists and belongs to the authenticated user
+    if (!$funcionario || $funcionario->user_id !== auth()->id()) {
+      abort(403, self::OWNERSHIP_ERROR);
+    }
+
+    $this->funcionarioService->deleteFuncionario($funcionario);
 
     return redirect()
       ->route('funcionarios.index')
