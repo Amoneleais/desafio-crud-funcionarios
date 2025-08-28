@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Editar Funcionário</title>
-</head>
-<body>
+@extends('layouts.admin')
+
+@section('content')
     <a href="{{ route('funcionarios.index') }}">Listar</a>
     <h2>Editar Funcionário</h2>
 
@@ -44,5 +38,5 @@
 
         <button type="submit">Atualizar</button>
     </form>
-</body>
-</html>
+
+@endsection

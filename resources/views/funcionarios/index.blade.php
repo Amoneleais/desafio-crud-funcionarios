@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funcionários</title>
-</head>
-<body>
+@extends('layouts.admin')
+
+@section('content')
     <a href="{{ route('funcionarios.create') }}">Criar Funcionário</a>
     <h2>Funcionários</h2>
 
@@ -38,10 +33,17 @@
             <td>
                 <a href="{{ route('funcionarios.edit', $funcionario->id) }}">Editar</a>
             </td>
+            <td>
+                <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este funcionário?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
         </tr>
         @empty
             <p>Nenhum funcionário encontrado.</p>
         @endforelse
     </table>
-</body>
-</html>
+
+@endsection
