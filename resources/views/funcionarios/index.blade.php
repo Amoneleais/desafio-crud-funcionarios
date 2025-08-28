@@ -31,9 +31,27 @@
                 <tr>
                     <td>{{ $funcionario->id }}</td>
                     <td>{{ $funcionario->nome }}</td>
-                    <td>{{ $funcionario->cpf }}</td>
+                    <td>
+                        @php
+                            $cpf = $funcionario->cpf;
+                            if ($cpf && strlen($cpf) === 11) {
+                                $cpf = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+                            }
+                        @endphp
+                        {{ $cpf }}
+                    </td>
                     <td>{{ $funcionario->data_nascimento }}</td>
-                    <td>{{ $funcionario->telefone }}</td>
+                    <td>
+                        @php
+                            $tel = $funcionario->telefone;
+                            if ($tel && strlen($tel) === 11) {
+                                $tel = preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $tel);
+                            } elseif ($tel && strlen($tel) === 10) {
+                                $tel = preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $tel);
+                            }
+                        @endphp
+                        {{ $tel }}
+                    </td>
                     <td>{{ $funcionario->genero }}</td>
                     <td style="min-width: 90px;">
                         <a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-info btn-sm w-100">Ver</a>
