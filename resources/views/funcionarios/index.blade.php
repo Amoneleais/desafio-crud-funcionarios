@@ -2,73 +2,55 @@
 
 @section('content')
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Funcionários</h2>
-        <a href="{{ route('funcionarios.create') }}" class="btn btn-success">Criar Funcionário</a>
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-2">
+        <h2 class="text-xl font-bold">Funcionários</h2>
+        <a href="{{ route('funcionarios.create') }}" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Criar Funcionário</a>
     </div>
 
     @if (session('success'))
-        <div class="alert alert-success">
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
             {{ session('success') }}
         </div>
     @endif
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover align-middle bg-white">
-            <thead class="table-primary">
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border rounded shadow text-sm">
+            <thead class="bg-indigo-100">
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Data de Nascimento</th>
-                    <th>Telefone</th>
-                    <th>Gênero</th>
-                    <th colspan="3" class="text-center">Ações</th>
+                    <th class="px-3 py-2 border-b">ID</th>
+                    <th class="px-3 py-2 border-b">Nome</th>
+                    <th class="px-3 py-2 border-b">CPF</th>
+                    <th class="px-3 py-2 border-b">Data de Nascimento</th>
+                    <th class="px-3 py-2 border-b">Telefone</th>
+                    <th class="px-3 py-2 border-b">Gênero</th>
+                    <th colspan="3" class="px-3 py-2 border-b text-center">Ações</th>
                 </tr>
             </thead>
             <tbody>
             @forelse ($funcionarios as $funcionario)
                 <tr>
-                    <td>{{ $funcionario->id }}</td>
-                    <td>{{ $funcionario->nome }}</td>
-                    <td>
-                        @php
-                            $cpf = $funcionario->cpf;
-                            if ($cpf && strlen($cpf) === 11) {
-                                $cpf = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
-                            }
-                        @endphp
-                        {{ $cpf }}
+                    <td class="px-3 py-2 border-b">{{ $funcionario->id }}</td>
+                    <td class="px-3 py-2 border-b">{{ $funcionario->nome }}</td>
+                    <td class="px-3 py-2 border-b">{{ $funcionario->cpf }}</td>
+                    <td class="px-3 py-2 border-b">{{ $funcionario->data_nascimento }}</td>
+                    <td class="px-3 py-2 border-b">{{ $funcionario->telefone }}</td>
+                    <td class="px-3 py-2 border-b">{{ $funcionario->genero }}</td>
+                    <td class="px-3 py-2 border-b min-w-[90px]">
+                        <a href="{{ route('funcionarios.show', $funcionario->id) }}" class="block w-full px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-center">Ver</a>
                     </td>
-                    <td>{{ $funcionario->data_nascimento }}</td>
-                    <td>
-                        @php
-                            $tel = $funcionario->telefone;
-                            if ($tel && strlen($tel) === 11) {
-                                $tel = preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $tel);
-                            } elseif ($tel && strlen($tel) === 10) {
-                                $tel = preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $tel);
-                            }
-                        @endphp
-                        {{ $tel }}
+                    <td class="px-3 py-2 border-b min-w-[90px]">
+                        <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="block w-full px-2 py-1 bg-yellow-400 text-gray-900 rounded hover:bg-yellow-500 text-center">Editar</a>
                     </td>
-                    <td>{{ $funcionario->genero }}</td>
-                    <td style="min-width: 90px;">
-                        <a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-info btn-sm w-100">Ver</a>
-                    </td>
-                    <td style="min-width: 90px;">
-                        <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-warning btn-sm w-100">Editar</a>
-                    </td>
-                    <td style="min-width: 90px;">
+                    <td class="px-3 py-2 border-b min-w-[90px]">
                         <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este funcionário?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm w-100">Excluir</button>
+                            <button type="submit" class="block w-full px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-center">Excluir</button>
                         </form>
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="9" class="text-center">Nenhum funcionário encontrado.</td></tr>
+                <tr><td colspan="9" class="text-center py-4">Nenhum funcionário encontrado.</td></tr>
             @endforelse
             </tbody>
         </table>

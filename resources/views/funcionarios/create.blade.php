@@ -2,48 +2,48 @@
 
 @section('content')
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Criar Funcionário</h2>
-        <a href="{{ route('funcionarios.index') }}" class="btn btn-secondary">Listar</a>
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-2">
+        <h2 class="text-xl font-bold">Criar Funcionário</h2>
+        <a href="{{ route('funcionarios.index') }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition">Listar</a>
     </div>
 
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul class="mb-0">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <ul class="mb-0 text-sm">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
     @endif
-    <form action="{{ route('funcionarios.store') }}" method="POST" class="card p-4 shadow-sm bg-white">
+    <form action="{{ route('funcionarios.store') }}" method="POST" class="bg-white p-6 rounded shadow space-y-4">
         @csrf
-        <div class="mb-3">
-            <label for="nome" class="form-label">Nome:</label>
-            <input type="text" id="nome" name="nome" value="{{ old('nome') }}" class="form-control">
+        <div>
+            <label for="nome" class="block text-sm font-medium text-gray-700">Nome:</label>
+            <input type="text" id="nome" name="nome" value="{{ old('nome') }}" class="mt-1 block w-full rounded border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         </div>
-        <div class="mb-3">
-            <label for="cpf" class="form-label">CPF:</label>
-            <input type="text" id="cpf" name="cpf" value="{{ old('cpf') }}" class="form-control">
+        <div>
+            <label for="cpf" class="block text-sm font-medium text-gray-700">CPF:</label>
+            <input type="text" id="cpf" name="cpf" value="{{ old('cpf') }}" class="mt-1 block w-full rounded border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         </div>
-        <div class="mb-3">
-            <label for="data_nascimento" class="form-label">Data de Nascimento:</label>
-            <input type="date" id="data_nascimento" name="data_nascimento" value="{{ old('data_nascimento') }}" class="form-control">
+        <div>
+            <label for="data_nascimento" class="block text-sm font-medium text-gray-700">Data de Nascimento:</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" value="{{ old('data_nascimento') }}" class="mt-1 block w-full rounded border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         </div>
-        <div class="mb-3">
-            <label for="telefone" class="form-label">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" value="{{ old('telefone') }}" class="form-control">
+        <div>
+            <label for="telefone" class="block text-sm font-medium text-gray-700">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" value="{{ old('telefone') }}" class="mt-1 block w-full rounded border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         </div>
-        <div class="mb-3">
-            <label for="genero" class="form-label">Gênero:</label>
-            <select id="genero" name="genero" class="form-select">
+        <div>
+            <label for="genero" class="block text-sm font-medium text-gray-700">Gênero:</label>
+            <select id="genero" name="genero" class="mt-1 block w-full rounded border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 <option value="">Selecione</option>
                 <option value="Masculino" {{ old('genero') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
                 <option value="Feminino" {{ old('genero') == 'Feminino' ? 'selected' : '' }}>Feminino</option>
                 <option value="Outro" {{ old('genero') == 'Outro' ? 'selected' : '' }}>Outro</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Salvar</button>
     </form>
     <script src="https://unpkg.com/imask"></script>
     <script>
