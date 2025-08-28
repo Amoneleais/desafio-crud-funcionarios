@@ -1,61 +1,198 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📋 Sistema de Funcionários - Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema simples para cadastro e gerenciamento de funcionários feito com Laravel.
 
-## About Laravel
+## 🎯 O que faz este sistema?
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- 📝 **Cadastrar usuários** - Criar sua conta para acessar o sistema
+- 👤 **Login/Logout** - Entrar e sair do sistema de forma segura
+- ➕ **Adicionar funcionários** - Cadastrar novos funcionários
+- 📋 **Listar funcionários** - Ver todos os funcionários cadastrados
+- ✏️ **Editar funcionários** - Alterar dados dos funcionários
+- 🗑️ **Excluir funcionários** - Remover funcionários do sistema
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tecnologias usadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 12** - Framework PHP (motor do sistema)
+- **MySQL** - Banco de dados (armazena as informações)
+- **TailwindCSS** - Estilização (deixa bonito)
+- **PHP 8.2+** - Linguagem de programação
 
-## Learning Laravel
+## 📋 O que você precisa ter instalado
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> ⚠️ **Atenção**: Instale tudo na ordem mostrada abaixo!
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **PHP 8.2+** - [Baixe aqui](https://www.php.net/downloads)
+2. **Composer** - [Baixe aqui](https://getcomposer.org/download/)
+3. **Node.js 18+** - [Baixe aqui](https://nodejs.org/)
+4. **MySQL** ou **XAMPP** - [MySQL](https://dev.mysql.com/downloads/) / [XAMPP](https://www.apachefriends.org/)
+5. **Git** - [Baixe aqui](https://git-scm.com/downloads)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+> 💡 **Dica para iniciantes**: Se estiver no Windows, instale o **XAMPP** - ele já vem com PHP, MySQL e Apache juntos!
 
-## Laravel Sponsors
+## 🚀 Como instalar (Passo a passo simples)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1️⃣ Baixe o projeto
 
-### Premium Partners
+```bash
+git clone https://github.com/seu-usuario/desafio-crud-funcionarios.git
+cd desafio-crud-funcionarios
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2️⃣ Instale as dependências do PHP
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3️⃣ Configure o arquivo de ambiente
 
-## Code of Conduct
+```bash
+# Windows:
+copy .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Mac/Linux:
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+Abra o arquivo `.env` com qualquer editor de texto e configure:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```env
+# Se estiver usando XAMPP:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=crud_funcionarios
+DB_USERNAME=root
+DB_PASSWORD=
 
-## License
+# Se instalou MySQL separado, use sua senha:
+DB_PASSWORD=sua_senha_mysql
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 4️⃣ Gere a chave do Laravel
+
+```bash
+php artisan key:generate
+```
+
+### 5️⃣ Crie o banco de dados
+
+**Se estiver usando XAMPP:**
+
+1. Abra o XAMPP Control Panel
+2. Inicie o **MySQL**
+3. Clique em **Admin** (abre o phpMyAdmin)
+4. Clique em **Novo** e crie um banco chamado `crud_funcionarios`
+
+**Se estiver usando MySQL:**
+
+```bash
+mysql -u root -p
+```
+
+```sql
+CREATE DATABASE crud_funcionarios;
+EXIT;
+```
+
+### 6️⃣ Crie as tabelas do banco
+
+```bash
+php artisan migrate
+```
+
+### 7️⃣ Instale as dependências do frontend
+
+```bash
+npm install
+```
+
+### 8️⃣ Compile os estilos
+
+```bash
+npm run dev
+```
+
+### 9️⃣ Inicie o sistema
+
+```bash
+php artisan serve
+```
+
+🎉 **Pronto!** Acesse: http://127.0.0.1:8000
+
+## 🎯 Como usar o sistema
+
+1. **Abra** http://127.0.0.1:8000
+2. **Clique em "Registrar"** para criar sua conta
+3. **Preencha** nome, email e senha
+4. **Faça login** com suas credenciais
+5. **Comece a cadastrar funcionários!**
+
+### Campos do funcionário:
+
+- **Nome completo**
+- **CPF** (formato: 000.000.000-00)
+- **Data de nascimento**
+- **Telefone** (formato: (00) 00000-0000)
+- **Gênero** (Masculino/Feminino/Outro)
+
+## 🆘 Problemas? Soluções rápidas!
+
+### ❌ "composer: command not found"
+
+- **Solução**: Instale o Composer do site oficial
+
+### ❌ "npm: command not found"
+
+- **Solução**: Instale o Node.js do site oficial
+
+### ❌ "Connection refused" (MySQL)
+
+- **XAMPP**: Verifique se o MySQL está iniciado no painel
+- **MySQL**: Execute `net start mysql80` (Windows)
+
+### ❌ "Unknown database 'crud_funcionarios'"
+
+- **Solução**: Crie o banco como mostrado no passo 5
+
+### ❌ "No application encryption key"
+
+- **Solução**: Execute `php artisan key:generate`
+
+### ❌ Página não carrega estilos
+
+- **Solução**: Execute `npm run dev` em outro terminal
+
+## 📚 Estrutura básica do projeto
+
+```
+📁 app/
+  📁 Models/          # Modelos (User, Funcionario)
+  📁 Http/Controllers/  # Controladores (lógica)
+📁 database/
+  📁 migrations/      # Estrutura das tabelas
+📁 resources/
+  📁 views/          # Páginas HTML
+  📁 css/           # Estilos
+📁 routes/
+  📄 web.php        # Rotas do sistema
+```
+
+## 🔧 Comandos úteis
+
+```bash
+# Limpar cache se algo der errado:
+php artisan config:clear
+php artisan cache:clear
+
+# Ver status das tabelas:
+php artisan migrate:status
+
+# Iniciar servidor:
+php artisan serve
+
+# Compilar estilos para produção:
+npm run build
+```
