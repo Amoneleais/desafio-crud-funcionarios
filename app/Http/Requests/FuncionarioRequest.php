@@ -1,14 +1,16 @@
 <?php namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class FuncionarioRequest extends FormRequest
 {
   protected function prepareForValidation()
   {
-    $cpf = isset($this->cpf) ? preg_replace('/[^0-9]/', '', $this->cpf) : null;
-    $telefone = isset($this->telefone)
-      ? preg_replace('/[^0-9]/', '', $this->telefone)
+    $data = $this->all();
+    $cpf = isset($data['cpf']) ? preg_replace('/\D/', '', $data['cpf']) : null;
+    $telefone = isset($data['telefone'])
+      ? preg_replace('/\D/', '', $data['telefone'])
       : null;
     $this->merge([
       'cpf' => $cpf,
@@ -30,9 +32,14 @@ class FuncionarioRequest extends FormRequest
    */
   public function rules(): array
   {
+    $funcionarioId = request()->route('funcionario') ?? request()->route('id');
     return [
       'nome' => 'required|string|max:255',
-      'cpf' => 'nullable|string|unique:funcionarios,cpf',
+      'cpf' => [
+        'nullable',
+        'string',
+        Rule::unique('funcionarios', 'cpf')->ignore($funcionarioId),
+      ],
       'data_nascimento' => 'nullable|date',
       'telefone' => 'nullable|numeric',
       'genero' => 'required|in:Masculino,Feminino,Outro',
