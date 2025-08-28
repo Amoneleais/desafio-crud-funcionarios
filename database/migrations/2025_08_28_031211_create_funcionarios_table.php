@@ -12,12 +12,18 @@ return new class extends Migration {
   {
     Schema::create('funcionarios', function (Blueprint $table) {
       $table->id();
+      $table->unsignedBigInteger('user_id');
       $table->string('nome');
       $table->string('cpf', 14)->unique();
       $table->date('data_nascimento');
       $table->string('telefone', 20);
       $table->enum('genero', ['Masculino', 'Feminino', 'Outro']);
       $table->timestamps();
+      $table
+        ->foreign('user_id')
+        ->references('id')
+        ->on('users')
+        ->onDelete('cascade');
     });
   }
 

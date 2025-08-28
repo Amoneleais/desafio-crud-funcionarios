@@ -9,7 +9,8 @@ class FuncionarioController extends Controller
 {
   public function index()
   {
-    $funcionarios = Funcionario::orderByDesc('id')->get();
+    $user = auth()->user();
+    $funcionarios = $user->funcionarios()->orderByDesc('id')->get();
 
     return view('funcionarios.index', ['funcionarios' => $funcionarios]);
   }
@@ -28,7 +29,8 @@ class FuncionarioController extends Controller
   public function store(FuncionarioRequest $request)
   {
     $validatedData = $request->validated();
-
+    $user = auth()->user();
+    $validatedData['user_id'] = $user->id;
     Funcionario::create($validatedData);
 
     return redirect()
