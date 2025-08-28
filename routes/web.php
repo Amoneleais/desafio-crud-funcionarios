@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FuncionarioController::class, 'index'])->name(
@@ -30,3 +31,11 @@ Route::delete('/delete-funcionario/{id}', [
   FuncionarioController::class,
   'destroy',
 ])->name('funcionarios.destroy');
+Route::get('/register', [AuthController::class, 'create'])->name('register');
+Route::post('/register', [AuthController::class, 'store'])->name(
+  'register.store',
+);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name(
+  'login.authenticate',
+);
