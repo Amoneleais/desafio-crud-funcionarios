@@ -19,14 +19,13 @@ class FuncionarioController extends Controller
 
   public function index()
   {
-    $funcionarios = $this->funcionarioService->getUserFuncionarios();
+    $funcionarios = $this->funcionarioService->getUserFuncionariosPaginated(7);
 
     return view('funcionarios.index', ['funcionarios' => $funcionarios]);
   }
 
   public function show(Funcionario $funcionario)
   {
-    // Ensure the funcionario exists and belongs to the authenticated user
     if (!$funcionario || $funcionario->user_id !== auth()->id()) {
       abort(403, self::OWNERSHIP_ERROR);
     }

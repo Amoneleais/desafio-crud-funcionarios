@@ -99,6 +99,12 @@
       </tbody>
     </table>
   </div>
+  @if (isset($funcionarios) && method_exists($funcionarios, 'links'))
+    <div class="mt-4 flex justify-end">
+      {{ $funcionarios->links() }}
+    </div>
+  @endif
+
   <script src="https://unpkg.com/imask"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
