@@ -167,52 +167,15 @@ Observação: a rota `/` é pública e voltada para apresentação; todas as ope
 
 - **Solução**: Execute `npm run dev` em outro terminal
 
-## 📚 Estrutura básica do projeto
+## 📚 Estrutura do projeto
 
-```
-artisan                      # helper script
-composer.json                # dependências PHP
-package.json                 # dependências frontend
-phpunit.xml                  # configuração de testes
-vite.config.js               # Vite config
-
-app/
-  Http/
-    Controllers/             # Controladores
-    Middleware/
-    Requests/
-  Models/                    # Modelos (User, Funcionario)
-  Services/                  # Lógica de negócio (e.g. FuncionarioService)
-
-bootstrap/
-config/
-database/
-  database.sqlite            # arquivo SQLite (uso para desenvolvimento rápido)
-  migrations/                # migrations (inclui create_funcionarios_table)
-  seeders/
-
-public/
-  index.php
-  build/                     # assets compilados
-
-resources/
-  css/
-  js/
-  views/
-    landing.blade.php        # Landing page pública
-    auth/
-    funcionarios/
-    components/
-    layouts/
-
-routes/
-  web.php
-
-storage/
-tests/
-vendor/
-README.md
-```
+- `app/` — código PHP (Models, Controllers, Services)
+- `database/` — migrations e seeders
+- `resources/` — views (landing, auth, funcionarios), css, js
+- `public/` — index.php e assets compilados
+- `routes/web.php` — rotas da aplicação
+- `tests/` — testes automatizados
+- `vendor/` — dependências instaladas pelo Composer
 
 ## 🔧 Comandos úteis
 
