@@ -33,6 +33,7 @@
           name="nome"
           value="{{ old('nome', $funcionario->nome) }}"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+          placeholder="Digite o nome do funcionário"
         />
         @error('nome')
           <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
@@ -48,6 +49,7 @@
           name="cpf"
           value="{{ old('cpf', $funcionario->cpf) }}"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+          placeholder="Digite o CPF do funcionário"
         />
         @error('cpf')
           <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
@@ -84,6 +86,7 @@
           name="telefone"
           value="{{ old('telefone', $funcionario->telefone) }}"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+          placeholder="Digite o telefone do funcionário"
         />
         @error('telefone')
           <div class="text-red-500 text-sm mt-1">{{ $message }}</div>

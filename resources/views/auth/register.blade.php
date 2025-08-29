@@ -32,6 +32,7 @@
             required
             autofocus
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+            placeholder="Digite seu nome"
           />
           @error('name')
             <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -51,6 +52,7 @@
             value="{{ old('email') }}"
             required
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+            placeholder="Digite seu email"
           />
           @error('email')
             <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -69,6 +71,7 @@
             name="password"
             required
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+            placeholder="Digite sua senha"
           />
           @error('password')
             <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -87,6 +90,7 @@
             name="password_confirmation"
             required
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+            placeholder="Confirme sua senha"
           />
         </div>
         <button
