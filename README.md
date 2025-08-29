@@ -122,21 +122,23 @@ php artisan serve
 
 🎉 **Pronto!** Acesse: http://127.0.0.1:8000
 
-## 🎯 Como usar o sistema
+A aplicação inclui uma landing page pública em `resources/views/landing.blade.php`, acessível na raiz do site (`/`).
 
-1. **Abra** http://127.0.0.1:8000
-2. **Clique em "Registrar"** para criar sua conta
-3. **Preencha** nome, email e senha
-4. **Faça login** com suas credenciais
-5. **Comece a cadastrar funcionários!**
+## 🎯 Como usar o sistema (rápido)
 
-### Campos do funcionário:
+1. Acesse a aplicação em http://127.0.0.1:8000 — a página `/` mostrará a landing page.
 
-- **Nome completo**
-- **CPF** (formato: 000.000.000-00)
-- **Data de nascimento**
-- **Telefone** (formato: (00) 00000-0000)
-- **Gênero** (Masculino/Feminino/Outro)
+- Para se registrar você tem duas opções:
+  - Clique no botão **"Teste gratuitamente"** na landing page.
+  - Ou acesse diretamente a rota: `/registrar` (ex.: http://127.0.0.1:8000/registrar).
+
+- Após registrar, faça login em `/login` com seu email e senha.
+
+- Usuário autenticado: acesse o painel para adicionar, listar, editar e remover funcionários.
+
+- Gênero (Masculino / Feminino / Outro)
+
+Observação: a rota `/` é pública e voltada para apresentação; todas as operações de gerenciamento exigem autenticação.
 
 ## 🆘 Problemas? Soluções rápidas!
 
@@ -165,19 +167,51 @@ php artisan serve
 
 - **Solução**: Execute `npm run dev` em outro terminal
 
-## 📚 Estrutura básica do projeto
+## 📚 Estrutura básica do projeto (atual)
 
 ```
-📁 app/
-  📁 Models/          # Modelos (User, Funcionario)
-  📁 Http/Controllers/  # Controladores (lógica)
-📁 database/
-  📁 migrations/      # Estrutura das tabelas
-📁 resources/
-  📁 views/          # Páginas HTML
-  📁 css/           # Estilos
-📁 routes/
-  📄 web.php        # Rotas do sistema
+artisan                      # helper script
+composer.json                # dependências PHP
+package.json                 # dependências frontend
+phpunit.xml                  # configuração de testes
+vite.config.js               # Vite config
+
+app/
+  Http/
+    Controllers/             # Controladores
+    Middleware/
+    Requests/
+  Models/                    # Modelos (User, Funcionario)
+  Services/                  # Lógica de negócio (e.g. FuncionarioService)
+
+bootstrap/
+config/
+database/
+  database.sqlite            # arquivo SQLite (uso para desenvolvimento rápido)
+  migrations/                # migrations (inclui create_funcionarios_table)
+  seeders/
+
+public/
+  index.php
+  build/                     # assets compilados
+
+resources/
+  css/
+  js/
+  views/
+    landing.blade.php        # Landing page pública
+    auth/
+    funcionarios/
+    components/
+    layouts/
+
+routes/
+  web.php
+
+storage/
+tests/
+vendor/
+README.md
 ```
 
 ## 🔧 Comandos úteis
