@@ -167,7 +167,7 @@ Observação: a rota `/` é pública e voltada para apresentação; todas as ope
 
 - **Solução**: Execute `npm run dev` em outro terminal
 
-## 📚 Estrutura básica do projeto (atual)
+## 📚 Estrutura básica do projeto
 
 ```
 artisan                      # helper script
