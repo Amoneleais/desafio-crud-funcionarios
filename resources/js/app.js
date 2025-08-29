@@ -1,4 +1,3 @@
-import './icons.js';
 import 'flowbite';
 
 // Your custom JavaScript code here
