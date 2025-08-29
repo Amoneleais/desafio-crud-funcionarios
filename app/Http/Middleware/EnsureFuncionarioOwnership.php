@@ -18,14 +18,11 @@ class EnsureFuncionarioOwnership
   {
     $funcionarioParam = $request->route('funcionario');
 
-    // If it's already a bound model instance
     if ($funcionarioParam instanceof \App\Models\Funcionario) {
       if ($funcionarioParam->user_id !== auth()->id()) {
         abort(403, 'Você não tem permissão para acessar este funcionário.');
       }
-    }
-    // If it's an ID string, we need to find and check the model
-    elseif (is_string($funcionarioParam) || is_numeric($funcionarioParam)) {
+    } elseif (is_string($funcionarioParam) || is_numeric($funcionarioParam)) {
       $funcionario = Funcionario::find($funcionarioParam);
       if (!$funcionario || $funcionario->user_id !== auth()->id()) {
         abort(403, 'Você não tem permissão para acessar este funcionário.');
