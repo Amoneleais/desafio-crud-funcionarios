@@ -38,7 +38,7 @@
         <div class="p-4 border border-b-0 border-gray-100 bg-white">
           <p class="text-gray-600">
             Vá em Funcionários → Novo funcionário, preencha os campos
-            obrigatórios (nome, CPF, cargo) e salve. Campos adicionais podem ser
+            obrigatórios (nome, gênero) e salve. Campos adicionais podem ser
             editados depois.
           </p>
         </div>

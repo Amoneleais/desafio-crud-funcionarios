@@ -122,7 +122,10 @@ php artisan serve
 
 🎉 **Pronto!** Acesse: http://127.0.0.1:8000
 
+<br>
 A aplicação inclui uma landing page pública em `resources/views/landing.blade.php`, acessível na raiz do site (`/`).
+
+> ⚠️ **Atenção:** Algumas descrições e recursos apresentados na landing page são meramente ilustrativos e não correspondem necessariamente às funcionalidades reais do sistema. Elas servem apenas para representação visual e fins de demonstração.
 
 ## 🎯 Como usar o sistema (rápido)
 
