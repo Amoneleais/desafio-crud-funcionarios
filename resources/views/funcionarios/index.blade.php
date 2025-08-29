@@ -7,7 +7,8 @@
     <h2 class="text-3xl font-extrabold text-gray-900">Funcionários</h2>
     <a
       href="{{ route('funcionarios.create') }}"
-      class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg shadow hover:bg-gray-800 transition"
+      class="inline-flex items-center px-6 py-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg shadow text-sm"
+      aria-label="Criar Funcionário"
     >
       <x-icon name="plus" class="mr-2" />
       Criar Funcionário
@@ -22,60 +23,54 @@
     </div>
   @endif
 
-  <div class="overflow-x-auto">
-    <table
-      class="min-w-full bg-white border rounded shadow text-sm text-center"
-    >
-      <thead class="bg-gray-100">
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
-          <th class="px-3 py-2 border-b font-semibold text-gray-900">Nome</th>
-          <th class="px-3 py-2 border-b font-semibold text-gray-900">CPF</th>
-          <th class="px-3 py-2 border-b font-semibold text-gray-900">
-            Data de Nascimento
-          </th>
-          <th class="px-3 py-2 border-b font-semibold text-gray-900">
-            Telefone
-          </th>
-          <th class="px-3 py-2 border-b font-semibold text-gray-900">Gênero</th>
-          <th
-            colspan="3"
-            class="px-3 py-2 border-b text-center font-semibold text-gray-900"
-          >
-            Ações
+          <th scope="col" class="px-6 py-3">Nome</th>
+          <th scope="col" class="px-6 py-3">CPF</th>
+          <th scope="col" class="px-6 py-3">Data de Nascimento</th>
+          <th scope="col" class="px-6 py-3">Telefone</th>
+          <th scope="col" class="px-6 py-3">Gênero</th>
+          <th scope="col" colspan="3" class="px-6 py-3">
+            <span class="sr-only">Ações</span>
           </th>
         </tr>
       </thead>
       <tbody>
         @forelse ($funcionarios as $funcionario)
-          <tr>
-            <td class="px-3 py-2 border-b">{{ $funcionario->nome }}</td>
-            <td class="px-3 py-2 border-b">{{ $funcionario->cpf }}</td>
-            <td class="px-3 py-2 border-b">
-              {{ $funcionario->data_nascimento }}
-            </td>
-            <td class="px-3 py-2 border-b">{{ $funcionario->telefone }}</td>
-            <td class="px-3 py-2 border-b">{{ $funcionario->genero }}</td>
-            <td class="px-3 py-2 border-b min-w-[90px]">
+          <tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+            >
+              {{ $funcionario->nome }}
+            </th>
+            <td class="px-6 py-4">{{ $funcionario->cpf }}</td>
+            <td class="px-6 py-4">{{ $funcionario->data_nascimento }}</td>
+            <td class="px-6 py-4">{{ $funcionario->telefone }}</td>
+            <td class="px-6 py-4">{{ $funcionario->genero }}</td>
+            <td class="px-6 py-4 text-right">
               <a
                 href="{{ route('funcionarios.show', $funcionario->id) }}"
-                class="inline-flex items-center justify-center w-full px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+                class="font-medium text-blue-600 hover:underline inline-flex items-center gap-1"
                 title="Ver funcionário"
               >
                 <x-icon name="eye" class="mr-1" />
                 Ver
               </a>
             </td>
-            <td class="px-3 py-2 border-b min-w-[90px]">
+            <td class="px-6 py-4 text-right">
               <a
                 href="{{ route('funcionarios.edit', $funcionario->id) }}"
-                class="inline-flex items-center justify-center w-full px-2 py-1 bg-gray-600 text-white rounded hover:bg-gray-700 transition"
+                class="font-medium text-blue-600 hover:underline inline-flex items-center gap-1"
                 title="Editar funcionário"
               >
                 <x-icon name="edit" class="mr-1" />
                 Editar
               </a>
             </td>
-            <td class="px-3 py-2 border-b min-w-[90px]">
+            <td class="px-6 py-4 text-right">
               <form
                 action="{{ route('funcionarios.destroy', $funcionario->id) }}"
                 method="POST"
@@ -85,7 +80,7 @@
                 @method('DELETE')
                 <button
                   type="submit"
-                  class="inline-flex items-center justify-center w-full px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                  class="px-3 py-2 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-medium rounded-lg text-sm inline-flex items-center gap-1"
                   title="Excluir funcionário"
                 >
                   <x-icon name="trash" class="mr-1" />
@@ -95,8 +90,8 @@
             </td>
           </tr>
         @empty
-          <tr>
-            <td colspan="9" class="text-center py-4">
+          <tr class="bg-white">
+            <td colspan="8" class="px-6 py-4 text-center">
               Nenhum funcionário encontrado.
             </td>
           </tr>
@@ -106,11 +101,13 @@
   </div>
   <script src="https://unpkg.com/imask"></script>
   <script>
-    IMask(document.getElementById('cpf'), {
-      mask: '000.000.000-00',
-    });
-    IMask(document.getElementById('telefone'), {
-      mask: '(00) 00000-0000',
+    document.addEventListener('DOMContentLoaded', function () {
+      if (document.getElementById('cpf')) {
+        IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
+      }
+      if (document.getElementById('telefone')) {
+        IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
+      }
     });
   </script>
 @endsection

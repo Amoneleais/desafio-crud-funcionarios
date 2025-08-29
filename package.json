@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "flowbite": "^3.1.2",
     "lucide-react": "^0.542.0"
   }
 }

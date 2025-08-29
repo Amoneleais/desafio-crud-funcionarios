@@ -7,7 +7,8 @@
     <h2 class="text-3xl font-extrabold text-gray-900">Criar Funcionário</h2>
     <a
       href="{{ route('funcionarios.index') }}"
-      class="flex px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition"
+      class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+      aria-label="Voltar"
     >
       <x-icon name="arrow-left-to-line" class="mr-1" />
       Voltar
@@ -22,7 +23,7 @@
     >
       @csrf
       <div>
-        <label for="nome" class="block text-sm font-semibold text-gray-700">
+        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900">
           Nome
         </label>
         <input
@@ -30,14 +31,14 @@
           id="nome"
           name="nome"
           value="{{ old('nome') }}"
-          class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
         />
         @error('nome')
           <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
         @enderror
       </div>
       <div>
-        <label for="cpf" class="block text-sm font-semibold text-gray-700">
+        <label for="cpf" class="block mb-2 text-sm font-medium text-gray-900">
           CPF
         </label>
         <input
@@ -45,7 +46,7 @@
           id="cpf"
           name="cpf"
           value="{{ old('cpf') }}"
-          class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
         />
         @error('cpf')
           <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
@@ -54,7 +55,7 @@
       <div>
         <label
           for="data_nascimento"
-          class="block text-sm font-semibold text-gray-700"
+          class="block mb-2 text-sm font-medium text-gray-900"
         >
           Data de Nascimento
         </label>
@@ -63,14 +64,17 @@
           id="data_nascimento"
           name="data_nascimento"
           value="{{ old('data_nascimento') }}"
-          class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
         />
         @error('data_nascimento')
           <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
         @enderror
       </div>
       <div>
-        <label for="telefone" class="block text-sm font-semibold text-gray-700">
+        <label
+          for="telefone"
+          class="block mb-2 text-sm font-medium text-gray-900"
+        >
           Telefone
         </label>
         <input
@@ -78,20 +82,23 @@
           id="telefone"
           name="telefone"
           value="{{ old('telefone') }}"
-          class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
         />
         @error('telefone')
           <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
         @enderror
       </div>
       <div>
-        <label for="genero" class="block text-sm font-semibold text-gray-700">
+        <label
+          for="genero"
+          class="block mb-2 text-sm font-medium text-gray-900"
+        >
           Gênero
         </label>
         <select
           id="genero"
           name="genero"
-          class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
         >
           <option value="">Selecione</option>
           <option
@@ -119,7 +126,7 @@
       </div>
       <button
         type="submit"
-        class="w-full py-3 px-4 bg-gray-900 text-white font-bold rounded-lg shadow hover:bg-gray-800 transition"
+        class="w-full py-3 px-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm"
       >
         Salvar
       </button>
@@ -127,11 +134,13 @@
   </div>
   <script src="https://unpkg.com/imask"></script>
   <script>
-    IMask(document.getElementById('cpf'), {
-      mask: '000.000.000-00',
-    });
-    IMask(document.getElementById('telefone'), {
-      mask: '(00) 00000-0000',
+    document.addEventListener('DOMContentLoaded', function () {
+      if (document.getElementById('cpf')) {
+        IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
+      }
+      if (document.getElementById('telefone')) {
+        IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
+      }
     });
   </script>
 @endsection
