@@ -10,7 +10,6 @@
       class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
       aria-label="Voltar"
     >
-      <x-icon name="arrow-left-to-line" class="mr-1" />
       Voltar
     </a>
   </div>

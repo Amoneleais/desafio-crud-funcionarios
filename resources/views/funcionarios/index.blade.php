@@ -10,7 +10,6 @@
       class="inline-flex items-center px-6 py-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg shadow text-sm"
       aria-label="Criar Funcionário"
     >
-      <x-icon name="plus" class="mr-2" />
       Criar Funcionário
     </a>
   </div>
@@ -56,7 +55,6 @@
                 class="font-medium text-blue-600 hover:underline inline-flex items-center gap-1"
                 title="Ver funcionário"
               >
-                <x-icon name="eye" class="mr-1" />
                 Ver
               </a>
             </td>
@@ -66,7 +64,6 @@
                 class="font-medium text-blue-600 hover:underline inline-flex items-center gap-1"
                 title="Editar funcionário"
               >
-                <x-icon name="edit" class="mr-1" />
                 Editar
               </a>
             </td>
@@ -83,7 +80,6 @@
                   class="px-3 py-2 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-medium rounded-lg text-sm inline-flex items-center gap-1"
                   title="Excluir funcionário"
                 >
-                  <x-icon name="trash" class="mr-1" />
                   Excluir
                 </button>
               </form>
