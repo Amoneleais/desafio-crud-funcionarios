@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Cadastro</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@1.7.0/dist/flowbite.js"></script>
   </head>
   <body class="min-h-screen bg-gray-50 flex items-center justify-center">
     <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-10 mt-10">
@@ -17,7 +18,10 @@
       <form method="POST" action="{{ route('register') }}" class="space-y-6">
         @csrf
         <div>
-          <label for="name" class="block text-sm font-semibold text-gray-700">
+          <label
+            for="name"
+            class="block mb-2 text-sm font-medium text-gray-900"
+          >
             Nome
           </label>
           <input
@@ -27,14 +31,17 @@
             value="{{ old('name') }}"
             required
             autofocus
-            class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
           />
           @error('name')
             <span class="text-red-500 text-xs">{{ $message }}</span>
           @enderror
         </div>
         <div>
-          <label for="email" class="block text-sm font-semibold text-gray-700">
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+          >
             Email
           </label>
           <input
@@ -43,7 +50,7 @@
             name="email"
             value="{{ old('email') }}"
             required
-            class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
           />
           @error('email')
             <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -52,7 +59,7 @@
         <div>
           <label
             for="password"
-            class="block text-sm font-semibold text-gray-700"
+            class="block mb-2 text-sm font-medium text-gray-900"
           >
             Senha
           </label>
@@ -61,7 +68,7 @@
             type="password"
             name="password"
             required
-            class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
           />
           @error('password')
             <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -70,7 +77,7 @@
         <div>
           <label
             for="password_confirmation"
-            class="block text-sm font-semibold text-gray-700"
+            class="block mb-2 text-sm font-medium text-gray-900"
           >
             Confirmar Senha
           </label>
@@ -79,12 +86,12 @@
             type="password"
             name="password_confirmation"
             required
-            class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
           />
         </div>
         <button
           type="submit"
-          class="w-full py-3 px-4 bg-gray-900 text-white font-bold rounded-md shadow hover:bg-gray-800 transition"
+          class="w-full py-3 px-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm"
         >
           Cadastrar
         </button>

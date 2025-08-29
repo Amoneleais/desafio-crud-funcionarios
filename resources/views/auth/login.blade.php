@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@1.7.0/dist/flowbite.js"></script>
   </head>
   <body class="min-h-screen bg-gray-50 flex items-center justify-center">
     <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-10 mt-10">
@@ -21,7 +22,10 @@
       >
         @csrf
         <div>
-          <label for="email" class="block text-sm font-semibold text-gray-700">
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+          >
             Email
           </label>
           <input
@@ -29,7 +33,7 @@
             id="email"
             name="email"
             required
-            class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
           />
           @error('email')
             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -38,7 +42,7 @@
         <div>
           <label
             for="password"
-            class="block text-sm font-semibold text-gray-700"
+            class="block mb-2 text-sm font-medium text-gray-900"
           >
             Senha
           </label>
@@ -47,20 +51,20 @@
             id="password"
             name="password"
             required
-            class="mt-1 p-3 block w-full rounded-md border-gray-300 shadow focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
           />
         </div>
         <div class="flex items-center justify-between">
           <a
             href="{{ route('register') }}"
-            class="text-sm text-gray-700 hover:text-gray-900 hover:underline font-semibold"
+            class="text-sm text-blue-600 hover:underline font-medium"
           >
             Não tem uma conta? Cadastre-se
           </a>
         </div>
         <button
           type="submit"
-          class="w-full py-3 px-4 bg-gray-900 text-white font-bold rounded-md shadow hover:bg-gray-800 transition"
+          class="w-full py-3 px-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm"
         >
           Entrar
         </button>
